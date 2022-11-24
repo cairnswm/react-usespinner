@@ -1,10 +1,10 @@
 {
   "name": "react-usespinner",
-  "version": "1.0.2",
-  "description": "track actions in progress to know if a spinner should be display. Actions expire within 10 seconds if not expired in code",
+  "version": "1.0.6",
+  "description": "Track actions in progress to know if a spinner should be display. Actions expire within 10 seconds if not expired in code",
   "private": false,
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/index.ts",
   "author": "cairnswm",
   "repository": {
     "type": "git",
@@ -52,7 +52,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rimraf dist",
-    "compile": "npm run clean && cross-env NODE_ENV=production babel src/hooks --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
+    "compile": "npm run clean && cross-env NODE_ENV=production npx tsc && cross-env copy ./README.md ./dist/README.md"
   },
   "eslintConfig": {
     "extends": [

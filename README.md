@@ -73,3 +73,7 @@ start("genericname", { delay: 30000})
 
 end("genericname"); // will mark all three actions as complete as they have the same name
 ```
+
+## Custom fetch
+
+useSpinner also exports it's own fetch method. This method is compatible with a normal browser fetch but creates a unique action id that is tracked by the useSpinner actions

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 interface Options {
   delay: number;
@@ -47,6 +47,31 @@ const useSpinner = (globalOptions?: Options) => {
       return actions && actions.length > 0
   }
 
+  const createUUID = () => {
+    // https://www.arungudelli.com/tutorial/javascript/how-to-create-uuid-guid-in-javascript-with-examples/
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+  const fetch = (...params: any) => {
+    const id = createUUID();
+    start(id)
+    return new Promise((resolve, reject) => {
+      let config = params[1] || {};
+      fetch(params[0], config)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        })
+        .finally(()=>{
+          end(id);
+        });
+    });
+  };
+
   // JSX component used to wrap spinner of choice
   const SpinnerContainer = ({ children }: SpinnerProps) => {
     // If no active Actions then dont display anything
@@ -58,7 +83,7 @@ const useSpinner = (globalOptions?: Options) => {
   };
 
   // return hook values
-  return { start, end, clear, busy, SpinnerContainer };
+  return { start, end, clear, busy, fetch, SpinnerContainer };
 };
 
 export default useSpinner;
