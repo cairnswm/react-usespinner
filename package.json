@@ -1,5 +1,5 @@
 {
-  "name": "useSpinner",
+  "name": "react-usespinner",
   "version": "1.0.2",
   "description": "track actions in progress to know if a spinner should be display. Actions expire within 10 seconds if not expired in code",
   "private": false,
