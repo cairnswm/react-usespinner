@@ -1,10 +1,10 @@
 {
   "name": "react-usespinner",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Track actions in progress to know if a spinner should be display. Actions expire within 10 seconds if not expired in code",
   "private": false,
   "license": "MIT",
-  "main": "dist/index.ts",
+  "main": "dist/index.js",
   "author": "cairnswm",
   "repository": {
     "type": "git",
